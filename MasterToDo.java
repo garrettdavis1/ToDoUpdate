@@ -24,15 +24,15 @@ import javafx.stage.Stage;
  *
  * @author benismunganga
  */
-public class MasterToDo extends Application 
+public class MasterToDo
 {
 
   
     private ArrayList <String> DaysofWeek = new ArrayList();
     public ComboBox <String> chooseBox;
     public static ArrayList<String> langChoice = new ArrayList();
-
-//ToDo no-arg constructor that allows to create the default stage in English
+    private ArrayList<TextArea> taDays = new ArrayList<>();
+    private ArrayList<CheckBox> cbDays = new ArrayList<>();
     public MasterToDo()
     {
         
@@ -44,15 +44,7 @@ public class MasterToDo extends Application
         DaysofWeek.add("Saturday");
         DaysofWeek.add("Sunday");
     }
-
     
-    @Override // Override the start method in the Application class
-    public void start(Stage primaryStage) 
-    {
-      //method that sets up the stage and displays it  
-        stageSetUp(getDaysofWeek());      
-    }
-
     
     public ArrayList <String> getDaysofWeek() 
     {
@@ -61,23 +53,28 @@ public class MasterToDo extends Application
     
     public void setDaysofWeek(ArrayList <String> DaysofWeek) 
     {
-        this.DaysofWeek = DaysofWeek;
+         this.DaysofWeek = DaysofWeek;
     }
     
-//method implementation that allows adding days
+       //method implementation that allows adding days
     private void days(ArrayList<String> weekdays, GridPane daysPane)
     {        
-             for(int k=0;k<7;k++)
-                 {
-                     daysPane.add(new Label(""+weekdays.get(k)),1,k);
-                     daysPane.add(new TextArea(),2,k);
-                     daysPane.add(new CheckBox(), 3, k);
-                 }
+         for(int k=0;k<7;k++)
+            {
+                 daysPane.add(new Label(""+weekdays.get(k)),1,k);
+                 TextArea t=new TextArea();
+                 taDays.add(t);
+                 daysPane.add(t,2,k);
+                 CheckBox ck=new CheckBox();
+                 cbDays.add(ck);
+                 daysPane.add(ck, 3, k);  
+            }
     }
-      
- //method implementation that allows to set up the stage  
-      
-    public void stageSetUp(ArrayList <String> weekdays)
+    
+     /* This method returns a pane that will be used in the "ToDoExecute class" while
+    setting up the stage for the scene
+    */
+    public GridPane stageSetUp(ArrayList <String> weekdays)       
     {
         Stage stage1 = new Stage(); // Create a new stage
         stage1.setTitle("Set To Do"); // Set the stage title
@@ -114,21 +111,17 @@ public class MasterToDo extends Application
         pane.add(clear, 2, 8);
         pane.add(save, 3, 8);
         pane.add(chooseBox, 0, 0);
-        Scene prompt = new Scene(pane);
-        stage1.setScene(prompt);
-        stage1.show();
-  
+
+
         
         addBtn.setOnAction(e -> SendOut());
         clear.setOnAction(e -> Clear());
+        
+        return pane;
 
     }
-/*
-    public static void main(String[] args) 
-    {
-        launch(args);
-    }
-*/
+    
+    
     private void ShowAdded()
     {
         
