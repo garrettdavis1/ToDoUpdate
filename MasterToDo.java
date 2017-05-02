@@ -122,15 +122,40 @@ public class MasterToDo
     }
     
     
-    private void ShowAdded()
+    public Stage ShowAdded()
     {
+        Stage showstage= new Stage();
+        showstage.setTitle("ShowToDo");
+        HBox showDays=new HBox();
+        VBox showtext=new VBox();
+        GridPane showPane=new GridPane();
         
+        TextArea txt=new TextArea();
+        txt.setEditable(false);
+        Scanner getText=new Scanner("todo.txt");
+        
+        showPane.getChildren().addAll(showDays,showtext);
+        Scene show=new Scene(showPane);
+        showstage.setScene(show);
+        return showstage;
+
+
     }
     
     public void SendOut() 
     {
         
-       
+              try {
+            PrintWriter outP= new PrintWriter(new File("todo.txt"));
+            for(int k=0;k<7;k++){
+               if(cbDays.get(k).isSelected()){
+               outP.println(""+taDays.get(k).getText());
+               }
+              outp.close();
+            }  
+        } catch (FileNotFoundException ex) {
+           System.out.println("file not found");
+                
     }
 
     private void Clear() 
