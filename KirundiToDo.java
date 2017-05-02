@@ -15,9 +15,7 @@ import javafx.stage.Stage;
 public class KirundiToDo extends MasterToDo
 {
 
-
-
-    final private ArrayList<String> umunsi = new ArrayList();
+    private ArrayList<String> umunsi = new ArrayList();
     public KirundiToDo()
     {
        //umunsi means day in Kirundi
@@ -30,13 +28,6 @@ public class KirundiToDo extends MasterToDo
             umunsi.add("Ku musi w' Imana");
     }
     
-    /*   
-    @Override
-    public void start(Stage kirundiStage)
-    {
-            stageSetUp(getUmunsi());
-    }  
-   */ 
     public ArrayList<String> getUmunsi() 
     {
         return umunsi;
