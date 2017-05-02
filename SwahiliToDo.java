@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class SwahiliToDo extends MasterToDo
 {
 
-    final private ArrayList<String> siku = new ArrayList();
+    private ArrayList<String> siku = new ArrayList();
     
     public SwahiliToDo()
     {
@@ -29,13 +29,6 @@ public class SwahiliToDo extends MasterToDo
             siku.add("Jumapili");
     }
     
-    /*   
-    @Override
-    public void start(Stage swahiliStage)
-    {
-            stageSetUp(getSiku());
-    }  
-   */ 
     public ArrayList<String> getSiku() 
     {
         return siku;
