@@ -15,7 +15,7 @@ import javafx.stage.Stage;
 public class FrenchToDo extends MasterToDo
 {
     
-    final private ArrayList<String> jours = new ArrayList();
+    private ArrayList<String> jours = new ArrayList();
     public FrenchToDo()
     {
        //jours means day in French
@@ -27,13 +27,7 @@ public class FrenchToDo extends MasterToDo
             jours.add("Samedi");
             jours.add("Dimanche");
     }
-   /*    
-    @Override
-    public void start(Stage frenchStage)
-    {
-            stageSetUp(getJours());
-    }  
-    */
+
     public ArrayList<String> getJours() 
     {
         return jours;
