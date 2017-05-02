@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class LingalaToDo extends MasterToDo
 {
 
-    final private ArrayList<String> mikolo = new ArrayList();
+    private ArrayList<String> mikolo = new ArrayList();
     public LingalaToDo()
     {
        //mokolo means day in Lingala
@@ -26,14 +26,7 @@ public class LingalaToDo extends MasterToDo
             mikolo.add("Mokolo ya mposo");
             mikolo.add("Lomingo");
     }
-    
-    /*   
-    @Override
-    public void start(Stage kirundiStage)
-    {
-            stageSetUp(getUmunsi());
-    }  
-   */ 
+
     public ArrayList<String> getMikolo() 
     {
         return mikolo;
