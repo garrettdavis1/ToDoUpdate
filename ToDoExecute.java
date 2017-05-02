@@ -23,57 +23,54 @@ ArrayList Week;
     public void start(Stage primaryStage) 
     {            
         
-        MasterToDo todoDefault = new MasterToDo(); /*default stage is created in English*/
-        todoDefault.stageSetUp(todoDefault.getDaysofWeek());
-
-/*assigning tasks to the ComboBox, if a language is selected then the stage changes the language
-*/
-        todoDefault.chooseBox.setOnAction(e -> 
+        MasterToDo todoDefault = new MasterToDo();
+        Scene defaultScene = new Scene(todoDefault.stageSetUp(todoDefault.getDaysofWeek()));
+        primaryStage.setScene(defaultScene);
+        
+       todoDefault.chooseBox.setOnAction(e -> 
         {
-            if("Swahili".equalsIgnoreCase(todoDefault.chooseBox.getValue()))
+            Scene prompt;
+            //choosing the languages
+            switch(todoDefault.chooseBox.getValue())
             {
-                  /*no-arg constructor that allows to get the days in Swahili*/
+                case "Swahili": 
                  SwahiliToDo todoSwa = new SwahiliToDo();
-                 todoDefault.stageSetUp(todoSwa.getSiku());
-                 todoDefault.chooseBox.setValue("Swahili");   
-            }
-            
-           if("English".equalsIgnoreCase(todoDefault.chooseBox.getValue()))
-            {
-                  /*no-arg constructor that allows to get the days in English*/
-                 todoDefault.stageSetUp(todoDefault.getDaysofWeek());
-                 todoDefault.chooseBox.setValue("English");   
-            }
-           
-            if("Français".equalsIgnoreCase(todoDefault.chooseBox.getValue()))
-            {
-                /*no-arg constructor that allows to get the days in French*/
+                 prompt = new Scene(todoSwa.stageSetUp(todoSwa.getSiku()));
+                 todoSwa.chooseBox.setValue("Swahili");  
+                 primaryStage.setScene(prompt);        
+                 break;
+                 
+                case "English":
+                 MasterToDo newTodoDefault = new MasterToDo();
+                 prompt = new Scene(newTodoDefault.stageSetUp(newTodoDefault.getDaysofWeek()));
+                 newTodoDefault.chooseBox.setValue("English");   
+                 primaryStage.setScene(prompt); 
+                 break;
+                
+                case "Français":
                  FrenchToDo todoFre = new FrenchToDo();
-                 todoDefault.stageSetUp(todoFre.getJours());
-                 todoDefault.chooseBox.setValue("Français");   
-            }
-            
-            if("Kirundi".equalsIgnoreCase(todoDefault.chooseBox.getValue()))
-            {
-                 /*no-arg constructor that allows to get the days in Kirundi*/
+                 prompt = new Scene(todoFre.stageSetUp(todoFre.getJours()));
+                 todoFre.chooseBox.setValue("Français");  
+                 primaryStage.setScene(prompt);
+                 break;
+
+                case "Kirundi":
                  KirundiToDo todoKir = new KirundiToDo();
-                 todoDefault.setDaysofWeek(todoKir.getUmunsi());
-                 todoDefault.stageSetUp(todoKir.getUmunsi());
-                 todoDefault.chooseBox.setValue("Kirundi");   
-            }
-            
-            if("Lingala".equalsIgnoreCase(todoDefault.chooseBox.getValue()))
-            {
-                 /*no-arg constructor that allows to get the days in Lingala*/
+                 prompt = new Scene(todoKir.stageSetUp(todoKir.getUmunsi()));
+                 todoKir.chooseBox.setValue("Kirundi"); 
+                 primaryStage.setScene(prompt);
+                 break;
+
+                case "Lingala":
                  LingalaToDo todoLin = new LingalaToDo();
-                 todoDefault.stageSetUp(todoLin.getMikolo());
-                 todoDefault.chooseBox.setValue("Lingala");   
+                 prompt = new Scene(todoLin.stageSetUp(todoLin.getMikolo()));
+                 todoLin.chooseBox.setValue("Lingala");   
+                 primaryStage.setScene(prompt);
+                 break;
             }
-            
         });
-    
-       
-     
+
+       primaryStage.show(); 
     }
 
     public static void main(String[] args) 
