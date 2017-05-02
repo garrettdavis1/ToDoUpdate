@@ -18,7 +18,6 @@ import javafx.stage.Stage;
 
 public class ToDoExecute extends Application 
 {
-ArrayList Week;
     @Override // Override the start method in the Application class
     public void start(Stage primaryStage) 
     {            
