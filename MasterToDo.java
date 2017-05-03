@@ -149,9 +149,10 @@ public class MasterToDo
             PrintWriter outP= new PrintWriter(new File("todo.txt"));
             for(int k=0;k<7;k++){
                if(cbDays.get(k).isSelected()){
-               outP.println(""+taDays.get(k).getText());
+               outP.println(""+taDays.get(k).getText());//maybe add them to an array / array list so that we can seperate out the days later?
+               
                }
-              outp.close();
+              outP.close();
             }  
         } catch (FileNotFoundException ex) {
            System.out.println("file not found");
